@@ -16,7 +16,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(windowScene: windowScene)
+        
+        // 탭바 컨트롤러 생성
+        let tabBarVC = UITabBarController()
+        
+        // 네비게이션컨트롤러로 만들기
+        let mainVC = UINavigationController(rootViewController: MainViewController())
+        let savedAtricleVC = UINavigationController(rootViewController: SavedArticleViewController())
+        
+        // 탭바 이름 설정
+        mainVC.title = "Home"
+        savedAtricleVC.title = "Saved"
+        
+        // 탭바로 사용하기 위한 뷰컨 설정
+        tabBarVC.setViewControllers([mainVC, savedAtricleVC], animated: false)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithTransparentBackground()
+        tabBarVC.tabBar.backgroundColor = .backColor
+        tabBarVC.tabBar.tintColor = .iconColor
+        tabBarVC.tabBar.standardAppearance = appearance
+        tabBarVC.tabBar.scrollEdgeAppearance = appearance
+        
+        // 탭바 이미지 설정
+        guard let items = tabBarVC.tabBar.items else { return }
+        
+        items[0].image = UIImage(systemName: "house.fill")
+        items[1].image = UIImage(systemName: "bookmark.fill")
+        
+        // 기본루트뷰를 탭바컨트롤러로 설정⭐️⭐️⭐️
+        window?.rootViewController = tabBarVC
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
