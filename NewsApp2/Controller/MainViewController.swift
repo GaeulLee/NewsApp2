@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Property
     var networkManager = NetworkManager.shared
+    var realmManager = RealmManager.shared
     var articles: [Article] = []
     
     
@@ -34,6 +35,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getDocumentsDirectory()
+        
         networkManager.delegate = self
         
         setNavigaionBar()
@@ -42,6 +45,12 @@ class MainViewController: UIViewController {
         setConstraints()
     }
     
+    func getDocumentsDirectory() {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        
+        print(documentsDirectory)
+    }
     
     // MARK: - UI Setting
     private func setNavigaionBar() {
@@ -125,8 +134,8 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let save = UIContextualAction(style: .normal, title: "Save") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             
-            //self.coreDataManager.saveArticle(articleToSave: self.articles[indexPath.row])
-            //print(self.articles[indexPath.row].title)
+            self.realmManager.addArticleToRealmDB(newArticle: self.articles[indexPath.row])
+            print(self.articles[indexPath.row].title)
             //self.view.makeToast("Successfully saved an article.", duration: 1.0)
             success(true)
         }

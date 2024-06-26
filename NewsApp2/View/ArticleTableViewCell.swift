@@ -18,6 +18,15 @@ class ArticleTableViewCell: UITableViewCell {
         }
     }
     
+    var articleModel: ArticleModel? {
+        didSet {
+            titleLabel.text = articleModel?.title
+            descLabel.text = articleModel?.desc
+            nameLabel.text = articleModel?.name
+            dateLabel.text = articleModel?.date
+        }
+    }
+    
     var articleImageUrl: String? {
         didSet {
             loadImage()
