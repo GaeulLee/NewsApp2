@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ArticleTableViewCell: UITableViewCell {
 
@@ -165,15 +166,33 @@ class ArticleTableViewCell: UITableViewCell {
     }
     
     private func setConstraints() {
-        NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 25),
-            descLabel.heightAnchor.constraint(equalToConstant: 55),
-            articleImageView.widthAnchor.constraint(equalToConstant: 120),
-            
-            outterStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
-            outterStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
-            outterStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
-            outterStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2)
-        ])
+        
+        titleLabel.snp.makeConstraints { make in
+            make.height.equalTo(25)
+        }
+        
+        descLabel.snp.makeConstraints { make in
+            make.height.equalTo(55)
+        }
+        
+        articleImageView.snp.makeConstraints { make in
+            make.width.equalTo(120)
+        }
+        
+        outterStackView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(self.safeAreaLayoutGuide).inset(2)
+            make.left.right.equalTo(self.safeAreaLayoutGuide).inset(5)
+        }
+        
+//        NSLayoutConstraint.activate([
+//            titleLabel.heightAnchor.constraint(equalToConstant: 25),
+//            descLabel.heightAnchor.constraint(equalToConstant: 55),
+//            articleImageView.widthAnchor.constraint(equalToConstant: 120),
+//            
+//            outterStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2),
+//            outterStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+//            outterStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+//            outterStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2)
+//        ])
     }
 }

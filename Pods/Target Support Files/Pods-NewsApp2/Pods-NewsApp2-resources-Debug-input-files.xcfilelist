@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-NewsApp2/Pods-NewsApp2-resources.sh
 ${PODS_CONFIGURATION_BUILD_DIR}/Realm/realm_objc_privacy.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift/realm_swift_privacy.bundle
+${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit_Privacy.bundle
 ${PODS_CONFIGURATION_BUILD_DIR}/Toast-Swift/Toast-Swift.bundle

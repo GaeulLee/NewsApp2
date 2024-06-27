@@ -4,24 +4,28 @@ PODS:
   - Realm/Headers (10.52.0)
   - RealmSwift (10.52.0):
     - Realm (= 10.52.0)
+  - SnapKit (5.7.1)
   - Toast-Swift (5.1.1)
 
 DEPENDENCIES:
   - Realm (~> 10)
   - RealmSwift (~> 10)
+  - SnapKit
   - Toast-Swift (~> 5.1.1)
 
 SPEC REPOS:
   trunk:
     - Realm
     - RealmSwift
+    - SnapKit
     - Toast-Swift
 
 SPEC CHECKSUMS:
   Realm: d1903aeb0b3585d810656c2ea04212bc1936ebc7
   RealmSwift: f7a85c86e61c6da6f6ef334778af3d133b0edf28
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
 
-PODFILE CHECKSUM: ec89e7e63cb938f76c60092c5c9f05c1e6692e89
+PODFILE CHECKSUM: 458117b61a7ea5a8adb6fdbdb8489d2240d79003
 
 COCOAPODS: 1.15.2

@@ -99,11 +99,13 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Realm/realm_objc_privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift/realm_swift_privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Toast-Swift/Toast-Swift.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Realm/realm_objc_privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/RealmSwift/realm_swift_privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Toast-Swift/Toast-Swift.bundle"
 fi
 
