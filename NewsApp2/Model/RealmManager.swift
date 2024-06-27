@@ -30,7 +30,7 @@ class RealmManager {
     func addArticleToRealmDB(newArticle: Article) {
         // 같은 기사 저장 안되도록 필터링
         let articles = realm.objects(ArticleModel.self)
-        let filter = articles.filter("title='\(newArticle.title)'")
+        let filter = articles.where({ $0.title == "\(newArticle.title)" })
         print(filter)
         if filter.first != nil {
             print("The article is duplicated.")

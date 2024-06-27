@@ -7,6 +7,7 @@
 
 import UIKit
 import SafariServices
+import Toast_Swift
 
 class MainViewController: UIViewController {
     
@@ -28,6 +29,8 @@ class MainViewController: UIViewController {
         networkManager.fetchArticles()
         tableView.reloadData()
         searchBar.text = ""
+        
+        view.makeToastActivity(.center)
     }
     
     
@@ -43,6 +46,10 @@ class MainViewController: UIViewController {
         setTableView()
         setSearchBar()
         setConstraints()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     func getDocumentsDirectory() {
@@ -136,7 +143,7 @@ extension MainViewController: UITableViewDelegate {
             
             self.realmManager.addArticleToRealmDB(newArticle: self.articles[indexPath.row])
             print(self.articles[indexPath.row].title)
-            //self.view.makeToast("Successfully saved an article.", duration: 1.0)
+            self.view.makeToast("Successfully saved an article.", duration: 1.0)
             success(true)
         }
         save.backgroundColor = .systemPink
@@ -158,7 +165,7 @@ extension MainViewController: UISearchBarDelegate {
         print("searchWord: \(searchWord)")
         
         DispatchQueue.main.async {
-            //self.view.makeToastActivity(.center)
+            self.view.makeToastActivity(.center)
         }
         networkManager.fetchArticles(searchFor: searchWord)
     }
@@ -173,6 +180,7 @@ extension MainViewController: NetworkManagerDelegate {
         self.articles = updatedArticles
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.view.hideToastActivity()
         }
     }
     
